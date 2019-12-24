@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Projecte</title>
+  <meta charset="UTF-8">
+  </meta>
+  <link rel="shortcut icon" type="image/x-icon" href="cotxe.jpg" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="projecte.css">
+  </link>
+</head>
+
+<body id="color">
+
+  <section id="tabs" class="project-tab">
+    <div class="container">
+      <h1 style="text-align: center;">Cotxes</h1><br>
+      <div class="row">
+        <div class="col-md-12">
+          <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-audi-tab" data-toggle="tab" href="#nav-audi" role="tab"
+                aria-controls="nav-audi" aria-selected="true"><img src="https://img.icons8.com/ios/50/000000/audi.png">
+                Audi</a>
+              <a class="nav-item nav-link" id="nav-ferrari-tab" data-toggle="tab" href="#nav-ferrari" role="tab"
+                aria-controls="nav-ferrari" aria-selected="false"><img
+                  src="https://img.icons8.com/color/48/000000/ferrari-badge.png"> Ferrari</a>
+              <a class="nav-item nav-link" id="nav-tesla-tab" data-toggle="tab" href="#nav-tesla" role="tab"
+                aria-controls="nav-tesla" aria-selected="false"><img
+                  src="https://img.icons8.com/color/48/000000/tesla-logo.png"> Tesla</a>
+            </div>
+          </nav>
+          <br>
+          <div id=filterDiv>
+              <a id="añadirBtn" style="float: right;"><img id="añadirImg" src="plus.png"> </a>
+              <input id="filterInput" type="text" class="filter" placeholder="Filtrar..."> 
+          </div>
+          <div class="tab-content" id="nav-tabContent">              
+            <div class="tab-pane fade show active" id="nav-audi" role="tabpanel" aria-labelledby="nav-audi-tab">                                 
+              <table id="tableAudi" class="table" cellspacing="0">           
+              </table>
+            </div>
+            <div class="tab-pane fade" id="nav-ferrari" role="tabpanel" aria-labelledby="nav-ferrari-tab">
+              <table id="tableFerrari" class="table" cellspacing="0">
+              </table>
+            </div>
+            <div class="tab-pane fade" id="nav-tesla" role="tabpanel" aria-labelledby="nav-tesla-tab">
+              <table id="tableTesla" class="table" cellspacing="0">
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal eliminar -->
+  <div id="eliminarModal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Eliminar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Estas segur que vols eliminar l'entrada?
+          No podràs recuperar-la!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button id="eliminarModalBtn" type="button" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal modificar -->
+  <div id="modificarModal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Editar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h1 id="errors"></h1>
+          Id: <input id="inputId" class="form-control" type="text"><br>
+          Nom: <input id="inputNom" class="form-control" type="text"><br>
+          Any: <input id="inputAny" class="form-control" type="text"><br>
+          Velocitat màxima: <input id="inputVelMax" class="form-control" type="text"><br>
+          CV: <input id="inputCV" class="form-control" type="text"><br>
+          Preu: <input id="inputPreu" class="form-control" type="text"><br>
+          <div id="errorModelDiv" class="alert alert-danger">
+            <p id="errorModelP"></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button id="modificarModalBtn" type="button" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal afegir -->
+  <div id="añadirModal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Afegir</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h1 id="errors"></h1>
+          Id: <input id="inputIdAfegir" class="form-control" type="text"><br>
+          Nom: <input id="inputNomAfegir" class="form-control" type="text"><br>
+          Any: <input id="inputAnyAfegir" class="form-control" type="text"><br>
+          Velocitat màxima: <input id="inputVelMaxAfegir" class="form-control" type="text"><br>
+          CV: <input id="inputCVAfegir" class="form-control" type="text"><br>
+          Preu: <input id="inputPreuAfegir" class="form-control" type="text"><br>
+          <div id="errorModelDivAfegir" class="alert alert-danger">
+              <p id="errorModelPAfegir"></p>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button id="afegirModalBtn" type="button" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="audi.js"></script>
+  <script src="ferrari.js"></script>
+  <script src="tesla.js"></script>
+  <script src="main.js"></script>
+
+</body>
+
+</html>
