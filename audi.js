@@ -237,5 +237,4 @@ $("#filterInput").on("keyup", function () {
     $("#tableAudi tr").filter(function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
-   
 });
