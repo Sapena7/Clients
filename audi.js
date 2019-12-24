@@ -51,7 +51,6 @@ var audi = [
 
 //Genera la taula
 generateAudiTable();
-document.body.style.background = "#f234f"; 
 
 function generateAudiTable() {
     var d = '<tr>' +
