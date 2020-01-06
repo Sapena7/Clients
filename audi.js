@@ -142,9 +142,8 @@ $("#tableAudi").on('click', '#modificarBtnTable', function () {
             $("#modificarModal").modal('hide');
         }else{
             $("#errorModelDiv").text("");
-            $("#errorModelDiv").append("Hi ha errors <br><br>" + errors.toString());
+            $("#errorModelDiv").append("Hi ha errors: <br><br>" + errors.toString());
             $("#errorModelDiv").show();
-            
         }
     });
 
@@ -207,6 +206,8 @@ $("#añadirBtn").click(function() {
         let errors = [];
         errors = validate(idCotxeModificar, id, nom, any, velMax, cv, preu);
         errors = errors.join("");
+
+        
         
         if(!errors){
             obj = {
@@ -223,9 +224,9 @@ $("#añadirBtn").click(function() {
             generateAudiTable();
             $("#añadirModal").modal('hide');
         }else{
-            $("#errorModelDiv").text("");
-            $("#errorModelDiv").append(errors.toString());
-            $("#errorModelDiv").show();
+            $("#errorModelDivAfegir").text("");
+            $("#errorModelDivAfegir").append("Hi ha errors: <br><br>" + errors.toString());
+            $("#errorModelDivAfegir").show();
         }
     });
 });
