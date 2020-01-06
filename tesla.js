@@ -143,7 +143,7 @@ $("#tableTesla").on('click', '#modificarBtnTable', function () {
             $("#modificarModal").modal('hide');
         }else{
             $("#errorModelDiv").text("");
-            $("#errorModelDiv").append(errors.toString());
+            $("#errorModelDiv").append("Hi ha errors: <br><br>" + errors.toString());
             $("#errorModelDiv").show();
         }
     });
@@ -224,7 +224,7 @@ $("#añadirBtn").click(function() {
             $("#añadirModal").modal('hide');
         }else{
             $("#errorModelDivAfegir").text("");
-            $("#errorModelDivAfegir").append(errors.toString());
+            $("#errorModelDiv").append("Hi ha errors: <br><br>" + errors.toString());
             $("#errorModelDivAfegir").show();
         }
     });
