@@ -2,7 +2,7 @@ $(function () {
     $("#myTab li").tab("show");
 });
 
-function validate(idCotxeModificar, id, nom, any, velMax, cv, preu) {
+function validate(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge) {
     let errors = [];
 
     for (var i = 0; i < audi.length; i++) {
@@ -31,6 +31,9 @@ function validate(idCotxeModificar, id, nom, any, velMax, cv, preu) {
     if (isNaN(preu)) {
         errors.push("-> El camp preu ha de ser un numero. </br>");
     }
+    if (!imatge.length > 0) {
+        errors.push("-> El camp imatge no pot estar buit. </br>");
+    }
 
     return errors;
 }
@@ -48,4 +51,3 @@ $('#ocultar').click(function(){
     $('#ocultar').hide();
     $('#mostrar').show();
 });
-

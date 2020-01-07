@@ -96,3 +96,7 @@ hr.new1 {
     float: right;
     padding-right: 15px;
 }
+
+.modal-dialog{
+    max-width: 900px;
+}

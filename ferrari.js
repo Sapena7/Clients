@@ -5,7 +5,8 @@ var ferrari = [
         "any": 2009,
         "velocitatMaxima": 325,
         "CV": 570,
-        "preu": 245924
+        "preu": 245924,
+        "img": "https://www.revistadelmotor.es/wp-content/uploads/2018/07/Ferrari-458-Italia-1.jpg"
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@ var ferrari = [
         "any": 2018,
         "velocitatMaxima": 320,
         "CV": 600,
-        "preu": 215602
+        "preu": 215602,
+        "img": "https://cochesnuevos.autofacil.es/img/FERRRARI_PORTOFINO.jpg"
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@ var ferrari = [
         "any": 2020,
         "velocitatMaxima": 340,
         "CV": 800,
-        "preu": 339000
+        "preu": 339000,
+        "img": "https://arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/PLSB3NSOZ5EBTO27GPFOYGZBXI.jpg"
     },
     {
         "id": 4,
@@ -29,7 +32,8 @@ var ferrari = [
         "any": 2020,
         "velocitatMaxima": 340,
         "CV": 800,
-        "preu": 339000
+        "preu": 339000,
+        "img": "https://elcomercio.pe/resizer/e9Wp_fKezad5AcAimBVja8EYumE=/1200x800/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/WMIOH4XJ7JGKNITVQHE2TLE5ME.jpg"
     },
     {
         "id": 5,
@@ -37,7 +41,8 @@ var ferrari = [
         "any": 2020,
         "velocitatMaxima": 320,
         "CV": 620,
-        "preu": 238077
+        "preu": 238077,
+        "img": "https://imagenes.km77.com/fotos/bbtcontent/clippingnew/KM7KPH20191113_0130/full-original.jpg"
     },
     {
         "id": 6,
@@ -45,7 +50,8 @@ var ferrari = [
         "any": 2020,
         "velocitatMaxima": 315,
         "CV": 590,
-        "preu": 210000
+        "preu": 210000,
+        "img": "https://arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/PLSB3NSOZ5EBTO27GPFOYGZBXI.jpg"
     }
 ];
 
@@ -74,7 +80,8 @@ function generateFerrariTable() {
             '<td>' + formatThousands(ferrari[i].preu) + ' €</td>' +
             '<td>' +
             '<a id="modificarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/edit.png"></a>' +
-            '<a id="eliminarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/delete-forever.png"></a>'
+            '<a id="eliminarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/delete-forever.png"></a>' + 
+            '<a id="voreBtnTable"><img src="eye.png"></a>' +
         '</td>' +
             '</tr>';
     }
@@ -109,6 +116,7 @@ $("#tableFerrari").on('click', '#modificarBtnTable', function () {
     $("#inputVelMax").val(obj.velocitatMaxima);
     $("#inputCV").val(obj.CV);
     $("#inputPreu").val(obj.preu);
+    $("#inputImg").val(obj.img);
 
     $("#modificarModalBtn").click(function () {
 
@@ -123,10 +131,10 @@ $("#tableFerrari").on('click', '#modificarBtnTable', function () {
         cv= parseInt(cv);
         let preu = $("#inputPreu").val();
         preu= parseInt(preu);
-
+        let imatge = $("#inputImg").val();
 
         let errors = [];
-        errors = validate(idCotxeModificar, id, nom, any, velMax, cv, preu);
+        errors = validate(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge);
         errors = errors.join("");
 
 
@@ -137,7 +145,7 @@ $("#tableFerrari").on('click', '#modificarBtnTable', function () {
             obj.velocitatMaxima = velMax;
             obj.CV = cv;
             obj.preu = preu;
-    
+            obj.img = imatge;
     
             $("#tableFerrari tr").remove();
             generateFerrariTable();
@@ -205,9 +213,11 @@ $("#añadirBtnFerrari").click(function() {
         let preu = $("#inputPreuAfegir").val();
         preu= parseInt(preu);
         $('#inputPreuAfegir').val('');
-
+        let imatge = $("#inputImgAfegir").val();
+        $('#inputImgAfegir').val('');
+        
         let errors = [];
-        errors = validate(idCotxeModificar, id, nom, any, velMax, cv, preu);
+        errors = validate(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge);
         errors = errors.join("");
         
         
@@ -218,7 +228,8 @@ $("#añadirBtnFerrari").click(function() {
                 "any": any,
                 "velocitatMaxima": velMax,
                 "CV": cv,
-                "preu": preu
+                "preu": preu,
+                "img": imatge
             };
             ferrari.push(obj);
     
@@ -231,6 +242,23 @@ $("#añadirBtnFerrari").click(function() {
             $("#errorModelDivAfegir").show();
         }
     });
+});
+
+$("#tableFerrari").on('click', '#voreBtnTable', function () {
+    var trId;
+    let imgUrl;
+    let nomCotxe;
+    trId = $(this).closest('tr').attr('id');       
+        for (var i = 0; i < ferrari.length; i++) {            
+            var obj = ferrari[i];           
+            if (obj.id == trId) {
+                imgUrl = obj.img;
+                nomCotxe = obj.nom;   
+            }
+        }
+    $('#imageModal #imgCotxe').attr("src", imgUrl);
+    $('#imageModal .modal-title').text(nomCotxe);
+    $('#imageModal').modal('show');
 });
 
 $("#filterInput").on("keyup", function () {
