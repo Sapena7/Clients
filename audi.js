@@ -141,8 +141,9 @@ $("#tableAudi").on('click', '#modificarBtnTable', function () {
             generateAudiTable();
             $("#modificarModal").modal('hide');
         }else{
-            $("#errorModelDiv").show(); //FALTA AFEGIR ELS ERRORS
-            $("#errorModelPAfegir").text(errors.toString());
+            $("#errorModelDiv").text("");
+            $("#errorModelDiv").append("Hi ha errors: <br><br>" + errors.toString());
+            $("#errorModelDiv").show();
         }
     });
 
@@ -171,8 +172,8 @@ $("#tableAudi").on('click', '#eliminarBtnTable', function () {
       })
 });
 
-$("#añadirBtn").click(function() {
-    $("#errorModelDivAfegir").hide(); //falta canviar
+$("#añadirBtnAudi").click(function() {
+    $("#errorModelDivAfegir").hide();
     $("#añadirModal").modal("show");
 
     //Agafa l'id que seleccionem
@@ -206,7 +207,6 @@ $("#añadirBtn").click(function() {
         errors = validate(idCotxeModificar, id, nom, any, velMax, cv, preu);
         errors = errors.join("");
         
-        
         if(!errors){
             obj = {
                 "id": id,
@@ -216,14 +216,15 @@ $("#añadirBtn").click(function() {
                 "CV": cv,
                 "preu": preu
             };
-            audi.push(obj);
+            audi.push(obj);            
     
             $("#tableAudi tr").remove();
             generateAudiTable();
             $("#añadirModal").modal('hide');
         }else{
+            $("#errorModelDivAfegir").text("");
+            $("#errorModelDivAfegir").append("Hi ha errors: <br><br>" + errors.toString());
             $("#errorModelDivAfegir").show();
-            $("#errorModelP").text(errors.toString());
         }
     });
 });

@@ -54,7 +54,6 @@ var tesla = [
 //Genera la taula
 generateTeslaTable();
 
-
 function generateTeslaTable() {
     var d = '<tr>' +
         '<th>ID</th>' +
@@ -143,8 +142,9 @@ $("#tableTesla").on('click', '#modificarBtnTable', function () {
             generateTeslaTable();
             $("#modificarModal").modal('hide');
         }else{
+            $("#errorModelDiv").text("");
+            $("#errorModelDiv").append("Hi ha errors: <br><br>" + errors.toString());
             $("#errorModelDiv").show();
-            $("#errorModelP").text(errors.toString());
         }
     });
 });
@@ -172,8 +172,8 @@ $("#tableTesla").on('click', '#eliminarBtnTable', function () {
 });
 
 
-$("#añadirBtn").click(function() {
-    $("#errorModelDiv").hide(); //falta canviar
+$("#añadirBtnTesla").click(function() {
+    $("#errorModelDivAfegir").hide();
     $("#añadirModal").modal("show");
 
     //Agafa l'id que seleccionem
@@ -223,8 +223,9 @@ $("#añadirBtn").click(function() {
             generateTeslaTable();
             $("#añadirModal").modal('hide');
         }else{
-            $("#errorModelDiv").show();
-            $("#errorModelP").text(errors.toString());
+            $("#errorModelDivAfegir").text("");
+            $("#errorModelDivAfegir").append("Hi ha errors: <br><br>" + errors.toString());
+            $("#errorModelDivAfegir").show();
         }
     });
 });

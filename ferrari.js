@@ -53,7 +53,6 @@ var ferrari = [
 //Genera la taula
 generateFerrariTable();
 
-
 function generateFerrariTable() {
     var d = '<tr>' +
         '<th>ID</th>' +
@@ -143,8 +142,9 @@ $("#tableFerrari").on('click', '#modificarBtnTable', function () {
             generateFerrariTable();
             $("#modificarModal").modal('hide');
         }else{
+            $("#errorModelDiv").text("");
+            $("#errorModelDiv").append("Hi ha errors: <br><br>" + errors.toString());
             $("#errorModelDiv").show();
-            $("#errorModelP").text(errors.toString());
         }
     });
 });
@@ -173,8 +173,8 @@ $("#tableFerrari").on('click', '#eliminarBtnTable', function () {
 });
 
 
-$("#añadirBtn").click(function() {
-    $("#errorModelDiv").hide(); //falta canviar
+$("#añadirBtnFerrari").click(function() {
+    $("#errorModelDivAfegir").hide();
     $("#añadirModal").modal("show");
 
     //Agafa l'id que seleccionem
@@ -224,8 +224,9 @@ $("#añadirBtn").click(function() {
             generateFerrariTable();
             $("#añadirModal").modal('hide');
         }else{
-            $("#errorModelDiv").show();
-            $("#errorModelP").text(errors.toString());
+            $("#errorModelDivAfegir").text("");
+            $("#errorModelDivAfegir").append("Hi ha errors: <br><br>" + errors.toString());
+            $("#errorModelDivAfegir").show();
         }
     });
 });

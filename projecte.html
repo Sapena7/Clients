@@ -17,7 +17,6 @@
 
   <section id="tabs" class="project-tab">
     <div class="container">
-      <h1 style="text-align: center;">Cotxes</h1><br>
       <div class="row">
         <div class="col-md-12">
           <nav>
@@ -33,26 +32,40 @@
                   src="https://img.icons8.com/color/48/000000/tesla-logo.png"> Tesla</a>
             </div>
           </nav>
-          <br>
-          <a id="añadirBtn" style="float: right;"><img id="añadirImg" src="plus.png"> </a>
-           <input id="filterInput" type="text" class="filter" placeholder="Filtrar...">          
+          <br>          
+           <input id="filterInput" type="text" class="filter" placeholder="Filtrar...">
           <div class="tab-content" id="nav-tabContent">              
-            <div class="tab-pane fade show active" id="nav-audi" role="tabpanel" aria-labelledby="nav-audi-tab">                                 
-              <table id="tableAudi" class="table" cellspacing="0">           
+            <div class="tab-pane fade show active" id="nav-audi" role="tabpanel" aria-labelledby="nav-audi-tab">                                              
+              <table id="tableAudi" class="table" cellspacing="0">         
               </table>
+              <div class="button_cont" align="center">
+                  <a id="añadirBtnAudi" class="example_e" rel="nofollow noopener"> Afegir <img id="añadirImg" src="audi24.png"></a>
+                </div>   
             </div>
-            <div class="tab-pane fade" id="nav-ferrari" role="tabpanel" aria-labelledby="nav-ferrari-tab">
+            <div class="tab-pane fade" id="nav-ferrari" role="tabpanel" aria-labelledby="nav-ferrari-tab">                
               <table id="tableFerrari" class="table" cellspacing="0">
               </table>
+              <div class="button_cont" align="center">
+                  <a id="añadirBtnFerrari" class="example_e" rel="nofollow noopener">Afegir <img id="añadirImg" src="ferrari24.png"></a>
+                </div>
             </div>
-            <div class="tab-pane fade" id="nav-tesla" role="tabpanel" aria-labelledby="nav-tesla-tab">
+            <div class="tab-pane fade" id="nav-tesla" role="tabpanel" aria-labelledby="nav-tesla-tab">                
               <table id="tableTesla" class="table" cellspacing="0">
               </table>
+              <div class="button_cont" align="center">
+                  <a id="añadirBtnTesla" class="example_e" rel="nofollow noopener"> Afegir <img id="añadirImg" src="tesla24.png"></a>
+                </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <br>
+    <br>
+    <hr class="new1">
+    <div align="center">
+        <img src="copyright24.png"> Jaume Sapena
+    </div>    
   </section>
 
   <!-- Modal eliminar -->
@@ -84,10 +97,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Editar</h5>
-          <div id="errorModelDiv" class="alert alert-danger">
-            <p id="errorModelP"></p>
-          </div>
+          <h5 class="modal-title" id="exampleModalCenterTitle">Editar</h5>          
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -100,6 +110,9 @@
           Velocitat màxima: <input id="inputVelMax" class="form-control" type="text"><br>
           CV: <input id="inputCV" class="form-control" type="text"><br>
           Preu: <input id="inputPreu" class="form-control" type="text"><br>
+          <div id="errorModelDiv" class="alert alert-danger">
+              <p id="errorModelP"></p>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -115,10 +128,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Afegir</h5>
-          <div id="errorModelDivAfegir" class="alert alert-danger">
-            <p id="errorModelPAfegir"></p>
-          </div>
+          <h5 class="modal-title" id="exampleModalCenterTitle">Afegir</h5>          
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -131,6 +141,9 @@
           Velocitat màxima: <input id="inputVelMaxAfegir" class="form-control" type="text"><br>
           CV: <input id="inputCVAfegir" class="form-control" type="text"><br>
           Preu: <input id="inputPreuAfegir" class="form-control" type="text"><br>
+          <div id="errorModelDivAfegir" class="alert alert-danger">
+              <p id="errorModelPAfegir"></p>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
