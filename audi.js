@@ -49,6 +49,7 @@ var audi = [
     }
 ];
 
+
 //Genera la taula
 generateAudiTable();
 
@@ -74,7 +75,7 @@ function generateAudiTable() {
             '<td>' +
             '<a id="modificarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/edit.png"></a>' +
             '<a id="eliminarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/delete-forever.png"></a>'
-        '</td>' +
+            '</td>' +
             '</tr>';
     }
     $("#tableAudi").append(d);
@@ -86,6 +87,7 @@ function formatThousands(x) {
 }
 
 $("#tableAudi").on('click', '#modificarBtnTable', function () {
+    $('.modal-content').css('background-color', '#D8D8D8');
     $("#errorModelDiv").hide();
     $("#modificarModal").modal("show");
 
@@ -152,7 +154,7 @@ $("#tableAudi").on('click', '#modificarBtnTable', function () {
 });
 
 $("#tableAudi").on('click', '#eliminarBtnTable', function () {
-
+    $('.modal-content').css('background-color', '#D8D8D8');
     $("#eliminarModal").modal("show");
     var trId;
     trId = $(this).closest('tr').attr('id');       
@@ -173,6 +175,7 @@ $("#tableAudi").on('click', '#eliminarBtnTable', function () {
 });
 
 $("#añadirBtnAudi").click(function() {
+    $('.modal-content').css('background-color', '#D8D8D8');
     $("#errorModelDivAfegir").hide();
     $("#añadirModal").modal("show");
 
@@ -220,7 +223,7 @@ $("#añadirBtnAudi").click(function() {
     
             $("#tableAudi tr").remove();
             generateAudiTable();
-            $("#añadirModal").modal('hide');
+            $("#añadirModal").modal('hide');            
         }else{
             $("#errorModelDivAfegir").text("");
             $("#errorModelDivAfegir").append("Hi ha errors: <br><br>" + errors.toString());

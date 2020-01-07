@@ -87,6 +87,7 @@ function formatThousands(x) {
 }
 
 $("#tableFerrari").on('click', '#modificarBtnTable', function () {
+    $('.modal-content').css('background-color', '#FE2E2E');
     $("#errorModelDiv").hide();
     $("#modificarModal").modal("show");
 
@@ -152,7 +153,7 @@ $("#tableFerrari").on('click', '#modificarBtnTable', function () {
 
 
 $("#tableFerrari").on('click', '#eliminarBtnTable', function () {
-
+    $('.modal-content').css('background-color', '#FE2E2E');
     $("#eliminarModal").modal("show");
     var trId;
     trId = $(this).closest('tr').attr('id');       
@@ -174,6 +175,7 @@ $("#tableFerrari").on('click', '#eliminarBtnTable', function () {
 
 
 $("#añadirBtnFerrari").click(function() {
+    $('.modal-content').css('background-color', '#FE2E2E');
     $("#errorModelDivAfegir").hide();
     $("#añadirModal").modal("show");
 

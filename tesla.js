@@ -88,6 +88,7 @@ function formatThousands(x) {
 }
 
 $("#tableTesla").on('click', '#modificarBtnTable', function () {
+    $('.modal-content').css('background-color', '#cccccc');
     $("#errorModelDiv").hide();
     $("#modificarModal").modal("show");
 
@@ -151,7 +152,7 @@ $("#tableTesla").on('click', '#modificarBtnTable', function () {
 
 
 $("#tableTesla").on('click', '#eliminarBtnTable', function () {
-
+    $('.modal-content').css('background-color', '#999999');
     $("#eliminarModal").modal("show");
     var trId;
     trId = $(this).closest('tr').attr('id');       
@@ -173,6 +174,7 @@ $("#tableTesla").on('click', '#eliminarBtnTable', function () {
 
 
 $("#añadirBtnTesla").click(function() {
+    $('.modal-content').css('background-color', '#999999');
     $("#errorModelDivAfegir").hide();
     $("#añadirModal").modal("show");
 

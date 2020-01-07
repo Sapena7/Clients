@@ -34,3 +34,18 @@ function validate(idCotxeModificar, id, nom, any, velMax, cv, preu) {
 
     return errors;
 }
+
+$('#filterInput').hide();
+$('#ocultar').hide();
+
+$('#mostrar').click(function(){
+    $('#filterInput').show(300);
+    $('#mostrar').hide();
+    $('#ocultar').show();
+});
+$('#ocultar').click(function(){
+    $('#filterInput').hide();
+    $('#ocultar').hide();
+    $('#mostrar').show();
+});
+
