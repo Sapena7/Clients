@@ -100,3 +100,18 @@ hr.new1 {
 .modal-dialog{
     max-width: 900px;
 }
+
+.tableAudi{
+    background-color: #D8D8D8; 
+    border: solid 2px #000000;
+}
+
+.tableFerrari{
+    background-color: #FE2E2E;
+    border: solid 2px #000000; 
+}
+
+.tableTesla{
+    background-color: #cccccc;
+    border: solid 2px #000000; 
+}

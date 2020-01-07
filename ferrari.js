@@ -60,7 +60,7 @@ var ferrari = [
 generateFerrariTable();
 
 function generateFerrariTable() {
-    var d = '<tr>' +
+    var d = '<tr class="tableFerrari">' +
         '<th>ID</th>' +
         '<th>Nom</th>' +
         '<th>Any</th>' +

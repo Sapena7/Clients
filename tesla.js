@@ -61,7 +61,7 @@ var tesla = [
 generateTeslaTable();
 
 function generateTeslaTable() {
-    var d = '<tr>' +
+    var d = '<tr class=tableTesla>' +
         '<th>ID</th>' +
         '<th>Nom</th>' +
         '<th>Any</th>' +

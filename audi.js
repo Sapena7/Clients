@@ -60,7 +60,7 @@ var audi = [
 generateAudiTable();
 
 function generateAudiTable() {
-    var d = '<tr>' +
+    var d = '<tr class="tableAudi">' +
         '<th>ID</th>' +
         '<th>Nom</th>' +
         '<th>Any</th>' +
