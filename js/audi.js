@@ -6,7 +6,7 @@ var audi = [
         "velocitatMaxima": 177,
         "CV": 95,
         "preu": 21102,
-        "img" : "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_A1_15302/Audi-a1-1.jpg"
+        "img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_A1_15302/Audi-a1-1.jpg"
     },
     {
         "id": 2,
@@ -80,8 +80,8 @@ function generateAudiTable() {
             '<td>' + formatThousands(audi[i].preu) + ' €</td>' +
             '<td>' +
             '<a id="modificarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/edit.png"></a>' +
-            '<a id="eliminarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/delete-forever.png"></a>' + 
-            '<a id="voreBtnTable"><img src="eye.png"></a>' +
+            '<a id="eliminarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/delete-forever.png"></a>' +
+            '<a id="voreBtnTable"><img src="imatges/eye.png"></a>' +
             '</td>' +
             '</tr>';
     }
@@ -102,14 +102,13 @@ $("#tableAudi").on('click', '#modificarBtnTable', function () {
     var trId = $(this).closest('tr').attr('id');
 
     var idCotxeModificar = parseInt(trId);
-    
+
     var obj;
     for (var i = 0; i < audi.length; i++) {
         if (audi[i].id == trId) {
             obj = audi[i];
         }
     }
-
 
     //Posar text en el value del input
     $("#inputId").val(obj.id);
@@ -123,23 +122,23 @@ $("#tableAudi").on('click', '#modificarBtnTable', function () {
     $("#modificarModalBtn").click(function () {
 
         let id = $("#inputId").val();
-        id= parseInt(id);
+        id = parseInt(id);
         let nom = $("#inputNom").val();
         let any = $("#inputAny").val();
-        any= parseInt(any);
+        any = parseInt(any);
         let velMax = $("#inputVelMax").val();
-        velMax= parseInt(velMax);
+        velMax = parseInt(velMax);
         let cv = $("#inputCV").val();
-        cv= parseInt(cv);
+        cv = parseInt(cv);
         let preu = $("#inputPreu").val();
-        preu= parseInt(preu);
+        preu = parseInt(preu);
         let imatge = $("#inputImg").val();
 
         let errors = [];
-        errors = validate(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge);
+        errors = validateAudi(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge);
         errors = errors.join("");
 
-        if(!errors){
+        if (!errors) {
             obj.id = id;
             obj.nom = nom;
             obj.any = any;
@@ -147,12 +146,12 @@ $("#tableAudi").on('click', '#modificarBtnTable', function () {
             obj.CV = cv;
             obj.preu = preu;
             obj.img = imatge;
-    
-    
+
+
             $("#tableAudi tr").remove();
             generateAudiTable();
             $("#modificarModal").modal('hide');
-        }else{
+        } else {
             $("#errorModelDiv").text("");
             $("#errorModelDiv").append("Hi ha errors: <br><br>" + errors.toString());
             $("#errorModelDiv").show();
@@ -163,46 +162,47 @@ $("#tableAudi").on('click', '#modificarBtnTable', function () {
 
 });
 
+/*
+* Elimina per Id 
+*/
+
 $("#tableAudi").on('click', '#eliminarBtnTable', function () {
     $('.modal-content').css('background-color', '#D8D8D8');
     $("#eliminarModal").modal("show");
     var trId;
-    trId = $(this).closest('tr').attr('id');       
+    trId = $(this).closest('tr').attr('id');
     $("#eliminarModalBtn").click(function (e) {
-        for (var i = 0; i < audi.length; i++) {            
-            var obj = audi[i];           
+        for (var i = 0; i < audi.length; i++) {
+            var obj = audi[i];
             if (obj.id == trId) {
                 audi.splice(i, 1);
                 $("#tableAudi tr").remove();
                 generateAudiTable();
-                $("#eliminarModal").modal('hide');        
+                $("#eliminarModal").modal('hide');
             }
         }
     });
+    //Si no es posa a null, quan intentem eliminar un altre, elimina els dos
     $('#eliminarModal').on('hidden.bs.modal', function () {
         trId = null;
-      })
+    })
 });
 
 $("#tableAudi").on('click', '#voreBtnTable', function () {
     var trId;
     let imgUrl;
-    let nomCotxe;
-    trId = $(this).closest('tr').attr('id');       
-        for (var i = 0; i < audi.length; i++) {            
-            var obj = audi[i];           
-            if (obj.id == trId) {
-                imgUrl = obj.img;
-                nomCotxe = obj.nom;   
-            }
+    trId = $(this).closest('tr').attr('id');
+    for (var i = 0; i < audi.length; i++) {
+        var obj = audi[i];
+        if (obj.id == trId) {
+            imgUrl = obj.img;
         }
+    }
     $('#imageModal #imgCotxe').attr("src", imgUrl);
-    $('#imageModal .modal-title').text(nomCotxe);
     $('#imageModal').modal('show');
 });
 
-
-$("#añadirBtnAudi").click(function() {
+$("#añadirBtnAudi").click(function () {
     $('.modal-content').css('background-color', '#D8D8D8');
     $("#errorModelDivAfegir").hide();
     $("#añadirModal").modal("show");
@@ -211,36 +211,36 @@ $("#añadirBtnAudi").click(function() {
     var trId = $(this).closest('tr').attr('id');
 
     var idCotxeModificar = parseInt(trId);
-    
+
     var obj;
 
     $("#afegirModalBtn").click(function () {
 
         let id = $("#inputIdAfegir").val();
-        id= parseInt(id);
+        id = parseInt(id);
         $('#inputIdAfegir').val('');
         let nom = $("#inputNomAfegir").val();
         $('#inputNomAfegir').val('');
         let any = $("#inputAnyAfegir").val();
-        any= parseInt(any);
+        any = parseInt(any);
         $('#inputAnyAfegir').val('');
         let velMax = $("#inputVelMaxAfegir").val();
-        velMax= parseInt(velMax);
+        velMax = parseInt(velMax);
         $('#inputVelMaxAfegir').val('');
         let cv = $("#inputCVAfegir").val();
-        cv= parseInt(cv);
+        cv = parseInt(cv);
         $('#inputCVAfegir').val('');
         let preu = $("#inputPreuAfegir").val();
-        preu= parseInt(preu);
+        preu = parseInt(preu);
         $('#inputPreuAfegir').val('');
         let imatge = $("#inputImgAfegir").val();
         $('#inputImgAfegir').val('');
 
         let errors = [];
-        errors = validate(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge);
+        errors = validateAudi(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge);
         errors = errors.join("");
-        
-        if(!errors){
+
+        if (!errors) {
             obj = {
                 "id": id,
                 "nom": nom,
@@ -250,12 +250,12 @@ $("#añadirBtnAudi").click(function() {
                 "preu": preu,
                 "img": imatge
             };
-            audi.push(obj);            
-    
+            audi.push(obj);
+
             $("#tableAudi tr").remove();
             generateAudiTable();
-            $("#añadirModal").modal('hide');            
-        }else{
+            $("#añadirModal").modal('hide');
+        } else {
             $("#errorModelDivAfegir").text("");
             $("#errorModelDivAfegir").append("Hi ha errors: <br><br>" + errors.toString());
             $("#errorModelDivAfegir").show();
@@ -269,3 +269,43 @@ $("#filterInput").on("keyup", function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
 });
+
+
+function validateAudi(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge) {
+    let errors = [];
+
+    for (var i = 0; i < audi.length; i++) {
+        if (audi[i].id == id) {
+            if (id != idCotxeModificar) {
+                errors.push("-> El id " + id + " ya existix. </br>");
+            }
+        }
+    }
+
+    if (isNaN(id)) {
+        errors.push("-> El id no pot ser buit. </br>");
+    }
+    if (!nom.length > 0) {
+        errors.push("-> El camp nom no pot estar buit. </br>");
+    }
+    if (isNaN(any)) {
+        errors.push("-> El camp any ha de ser un numero. </br>");
+    }
+    if (isNaN(velMax)) {
+        errors.push("-> El camp velocitat màxima ha de ser un numero. </br>");
+    }
+    if (isNaN(cv)) {
+        errors.push("-> El camp CV ha de ser un numero. </br>");
+    }
+    if (isNaN(preu)) {
+        errors.push("-> El camp preu ha de ser un numero. </br>");
+    }
+    if (!imatge.length > 0) {
+        errors.push("-> El camp imatge no pot estar buit. </br>");
+    }
+    if (!fileExtValidate(imatge)) {
+        errors.push("-> El link de l'imatge no es vàlid, selecciona una imatge amb (png, gif, jpeg, jpg). </br>");
+    }
+
+    return errors;
+}

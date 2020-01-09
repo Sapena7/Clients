@@ -15,7 +15,7 @@ var tesla = [
         "velocitatMaxima": 320,
         "CV": 612,
         "preu": 110780,
-        "img": "https://soymotor.com/sites/default/files/usuarios/redaccion/portal/redaccion/tesla-model-x-1-f1-soymotor.jpg"                         
+        "img": "https://soymotor.com/sites/default/files/usuarios/redaccion/portal/redaccion/tesla-model-x-1-f1-soymotor.jpg"
     },
     {
         "id": 3,
@@ -24,7 +24,7 @@ var tesla = [
         "velocitatMaxima": 400,
         "CV": 2000,
         "preu": 172000,
-        "img": "https://evcompare.io/upload/resize_cache/iblock/485/1200_800_2/485e32eb754c49ab58cedb4ad4ce4235.jpg"                       
+        "img": "https://evcompare.io/upload/resize_cache/iblock/485/1200_800_2/485e32eb754c49ab58cedb4ad4ce4235.jpg"
     },
     {
         "id": 4,
@@ -33,7 +33,7 @@ var tesla = [
         "velocitatMaxima": 209,
         "CV": 200,
         "preu": 36000,
-        "img": "https://www.thestreet.com/.image/t_share/MTY4NjUyNzU1NTM0MTYxODE1/wall-street-is-tepid-on-teslas-new-cybertruck-its-kind-of-aggressive.jpg"                        
+        "img": "https://www.thestreet.com/.image/t_share/MTY4NjUyNzU1NTM0MTYxODE1/wall-street-is-tepid-on-teslas-new-cybertruck-its-kind-of-aggressive.jpg"
     },
     {
         "id": 5,
@@ -42,7 +42,7 @@ var tesla = [
         "velocitatMaxima": 209,
         "CV": 351,
         "preu": 97000,
-        "img": "https://cdn.autobild.es/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2019/03/nos-subimos-tesla-model_2.jpg?itok=n50u-tsN"                    
+        "img": "https://cdn.autobild.es/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2019/03/nos-subimos-tesla-model_2.jpg?itok=n50u-tsN"
     },
     {
         "id": 6,
@@ -51,7 +51,7 @@ var tesla = [
         "velocitatMaxima": 210,
         "CV": 306,
         "preu": 48000,
-        "img": "https://icdn2.digitaltrends.com/image/digitaltrends_es/tesla-model-3-feat-6.jpg"                     
+        "img": "https://icdn2.digitaltrends.com/image/digitaltrends_es/tesla-model-3-feat-6.jpg"
     }
 
 
@@ -81,17 +81,12 @@ function generateTeslaTable() {
             '<td>' + formatThousands(tesla[i].preu) + ' €</td>' +
             '<td>' +
             '<a id="modificarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/edit.png"></a>' +
-            '<a id="eliminarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/delete-forever.png"></a>' + 
-            '<a id="voreBtnTable"><img src="eye.png"></a>' +
-        '</td>' +
+            '<a id="eliminarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/delete-forever.png"></a>' +
+            '<a id="voreBtnTable"><img src="imatges/eye.png"></a>' +
+            '</td>' +
             '</tr>';
     }
     $("#tableTesla").append(d);
-}
-
-
-function formatThousands(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
 $("#tableTesla").on('click', '#modificarBtnTable', function () {
@@ -122,24 +117,24 @@ $("#tableTesla").on('click', '#modificarBtnTable', function () {
     $("#modificarModalBtn").click(function () {
 
         let id = $("#inputId").val();
-        id= parseInt(id);
+        id = parseInt(id);
         let nom = $("#inputNom").val();
         let any = $("#inputAny").val();
-        any= parseInt(any);
+        any = parseInt(any);
         let velMax = $("#inputVelMax").val();
-        velMax= parseInt(velMax);
+        velMax = parseInt(velMax);
         let cv = $("#inputCV").val();
-        cv= parseInt(cv);
+        cv = parseInt(cv);
         let preu = $("#inputPreu").val();
-        preu= parseInt(preu);
+        preu = parseInt(preu);
         let imatge = $("#inputImg").val();
 
 
         let errors = [];
-        errors = validate(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge);
+        errors = validateTesla(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge);
         errors = errors.join("");
 
-        if(!errors){
+        if (!errors) {
             obj.id = id;
             obj.nom = nom;
             obj.any = any;
@@ -147,11 +142,11 @@ $("#tableTesla").on('click', '#modificarBtnTable', function () {
             obj.CV = cv;
             obj.preu = preu;
             obj.img = imatge;
-    
+
             $("#tableTesla tr").remove();
             generateTeslaTable();
             $("#modificarModal").modal('hide');
-        }else{
+        } else {
             $("#errorModelDiv").text("");
             $("#errorModelDiv").append("Hi ha errors: <br><br>" + errors.toString());
             $("#errorModelDiv").show();
@@ -164,25 +159,25 @@ $("#tableTesla").on('click', '#eliminarBtnTable', function () {
     $('.modal-content').css('background-color', '#999999');
     $("#eliminarModal").modal("show");
     var trId;
-    trId = $(this).closest('tr').attr('id');       
+    trId = $(this).closest('tr').attr('id');
     $("#eliminarModalBtn").click(function (e) {
-        for (var i = 0; i < tesla.length; i++) {            
-            var obj = tesla[i];           
+        for (var i = 0; i < tesla.length; i++) {
+            var obj = tesla[i];
             if (obj.id == trId) {
                 tesla.splice(i, 1);
                 $("#tableTesla tr").remove();
                 generateTeslaTable();
-                $("#eliminarModal").modal('hide');        
+                $("#eliminarModal").modal('hide');
             }
         }
     });
     $('#eliminarModal').on('hidden.bs.modal', function () {
         trId = null;
-      })
+    })
 });
 
 
-$("#añadirBtnTesla").click(function() {
+$("#añadirBtnTesla").click(function () {
     $('.modal-content').css('background-color', '#999999');
     $("#errorModelDivAfegir").hide();
     $("#añadirModal").modal("show");
@@ -191,37 +186,37 @@ $("#añadirBtnTesla").click(function() {
     var trId = $(this).closest('tr').attr('id');
 
     var idCotxeModificar = parseInt(trId);
-    
+
     var obj;
 
     $("#afegirModalBtn").click(function () {
 
         let id = $("#inputIdAfegir").val();
-        id= parseInt(id);
+        id = parseInt(id);
         $('#inputIdAfegir').val('');
         let nom = $("#inputNomAfegir").val();
         $('#inputNomAfegir').val('');
         let any = $("#inputAnyAfegir").val();
-        any= parseInt(any);
+        any = parseInt(any);
         $('#inputAnyAfegir').val('');
         let velMax = $("#inputVelMaxAfegir").val();
-        velMax= parseInt(velMax);
+        velMax = parseInt(velMax);
         $('#inputVelMaxAfegir').val('');
         let cv = $("#inputCVAfegir").val();
-        cv= parseInt(cv);
+        cv = parseInt(cv);
         $('#inputCVAfegir').val('');
         let preu = $("#inputPreuAfegir").val();
-        preu= parseInt(preu);
+        preu = parseInt(preu);
         $('#inputPreuAfegir').val('');
         let imatge = $("#inputImgAfegir").val();
         $('#inputImgAfegir').val('');
 
         let errors = [];
-        errors = validate(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge);
+        errors = validateTesla(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge);
         errors = errors.join("");
-        
-        
-        if(!errors){
+
+
+        if (!errors) {
             obj = {
                 "id": id,
                 "nom": nom,
@@ -232,11 +227,11 @@ $("#añadirBtnTesla").click(function() {
                 "img": imatge
             };
             tesla.push(obj);
-    
+
             $("#tableTesla tr").remove();
             generateTeslaTable();
             $("#añadirModal").modal('hide');
-        }else{
+        } else {
             $("#errorModelDivAfegir").text("");
             $("#errorModelDivAfegir").append("Hi ha errors: <br><br>" + errors.toString());
             $("#errorModelDivAfegir").show();
@@ -247,17 +242,14 @@ $("#añadirBtnTesla").click(function() {
 $("#tableTesla").on('click', '#voreBtnTable', function () {
     var trId;
     let imgUrl;
-    let nomCotxe;
-    trId = $(this).closest('tr').attr('id');       
-        for (var i = 0; i < tesla.length; i++) {            
-            var obj = tesla[i];           
-            if (obj.id == trId) {
-                imgUrl = obj.img;
-                nomCotxe = obj.nom;   
-            }
+    trId = $(this).closest('tr').attr('id');
+    for (var i = 0; i < tesla.length; i++) {
+        var obj = tesla[i];
+        if (obj.id == trId) {
+            imgUrl = obj.img;
         }
+    }
     $('#imageModal #imgCotxe').attr("src", imgUrl);
-    $('#imageModal .modal-title').text(nomCotxe);
     $('#imageModal').modal('show');
 });
 
@@ -267,3 +259,43 @@ $("#filterInput").on("keyup", function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
 });
+
+function validateTesla(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge) {
+    let errors = [];
+
+    for (var i = 0; i < audi.length; i++) {
+        if (audi[i].id == id) {
+            if (id != idCotxeModificar) {
+                errors.push("-> El id " + id + " ya existix. </br>");
+            }
+        }
+    }
+
+    if (isNaN(id)) {
+        errors.push("-> El id no pot ser buit. </br>");
+    }
+    if (!nom.length > 0) {
+        errors.push("-> El camp nom no pot estar buit. </br>");
+    }
+    if (isNaN(any)) {
+        errors.push("-> El camp any ha de ser un numero. </br>");
+    }
+    if (isNaN(velMax)) {
+        errors.push("-> El camp velocitat màxima ha de ser un numero. </br>");
+    }
+    if (isNaN(cv)) {
+        errors.push("-> El camp CV ha de ser un numero. </br>");
+    }
+    if (isNaN(preu)) {
+        errors.push("-> El camp preu ha de ser un numero. </br>");
+    }
+    if (!imatge.length > 0) {
+        errors.push("-> El camp imatge no pot estar buit. </br>");
+    }
+    if (!fileExtValidate(imatge)) {
+        errors.push("-> El link de l'imatge no es vàlid, selecciona una imatge amb (png, gif, jpeg, jpg). </br>");
+    }
+
+    return errors;
+}
+

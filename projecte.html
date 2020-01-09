@@ -2,14 +2,16 @@
 <html>
 
 <head>
-  <title>Projecte</title>
+  
+  <link rel = "icon" type = "image/jpg" sizes = "16x16" href = "imatges/cotxe.jpg">
+  <title>Cotxes</title>
   <meta charset="UTF-8">
   </meta>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="projecte.css">
+  <link rel="stylesheet" type="text/css" href="css/projecte.css">
   </link>
 </head>
 
@@ -32,33 +34,33 @@
                   src="https://img.icons8.com/color/48/000000/tesla-logo.png"> Tesla</a>
             </div>
           </nav>
-          <a id="mostrar" class="filterBtn" rel="nofollow noopener"><img src="filter.png"></a>
-          <a id="ocultar" class="filterBtn" rel="nofollow noopener"><img src="filter.png"></a>                    
+          <a id="mostrar" class="filterBtn" rel="nofollow noopener"><img src="imatges/filter.png"></a>
+          <a id="ocultar" class="filterBtn" rel="nofollow noopener"><img src="imatges/filter.png"></a>                    
           <input id="filterInput" type="text" class="filter" placeholder="Filtrar...">
           <div class="tab-content" id="nav-tabContent">              
             <div class="tab-pane fade show active" id="nav-audi" role="tabpanel" aria-labelledby="nav-audi-tab">                                              
               <table id="tableAudi" class="table" cellspacing="0">         
               </table>
               <div id="audiAfegir" class="button_cont" align="center">
-                  <a id="añadirBtnAudi" class="example_e" rel="nofollow noopener"> Afegir <img id="añadirImg" src="audi24.png"></a>
+                  <a id="añadirBtnAudi" class="example_e" rel="nofollow noopener"> Afegir <img id="añadirImg" src="imatges/audi24.png"></a>
                 </div>   
             </div>
             <div class="tab-pane fade" id="nav-ferrari" role="tabpanel" aria-labelledby="nav-ferrari-tab">                
               <table id="tableFerrari" class="table" cellspacing="0">
               </table>
               <div class="button_cont" align="center">
-                  <a id="añadirBtnFerrari" class="example_e" rel="nofollow noopener">Afegir <img id="añadirImg" src="ferrari24.png"></a>
+                  <a id="añadirBtnFerrari" class="example_e" rel="nofollow noopener">Afegir <img id="añadirImg" src="imatges/ferrari24.png"></a>
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-tesla" role="tabpanel" aria-labelledby="nav-tesla-tab">                
               <table id="tableTesla" class="table" cellspacing="0">
               </table>
               <div class="button_cont" align="center">
-                  <a id="añadirBtnTesla" class="example_e" rel="nofollow noopener"> Afegir <img id="añadirImg" src="tesla24.png"></a>
+                  <a id="añadirBtnTesla" class="example_e" rel="nofollow noopener"> Afegir <img id="añadirImg" src="imatges/tesla24.png"></a>
                 </div>
             </div>           
           </div>
-        </div>        
+        </div>
       </div>
      
     </div>
@@ -67,12 +69,12 @@
      <div>
       <img src="https://img.icons8.com/cute-clipart/24/000000/edit.png"> Editar 
       <img src="https://img.icons8.com/cute-clipart/24/000000/delete-forever.png"> Eliminar 
-      <img src="filter24.png"> Mostrar/Ocultar filtro 
-      <img src="eye.png"> Previsualitza 
+      <img src="imatges/filter24.png"> Mostrar/Ocultar filtro 
+      <img src="imatges/eye.png"> Previsualitza 
     </div>
     <hr class="new1">
     <div align="center">
-        <img src="copyright24.png"> Jaume Sapena
+        <img src="imatges/copyright24.png"> Jaume Sapena
     </div>    
   </section>
 
@@ -118,7 +120,7 @@
           Velocitat màxima: <input id="inputVelMax" class="form-control" type="number"><br>
           CV: <input id="inputCV" class="form-control" type="number"><br>
           Preu: <input id="inputPreu" class="form-control" type="number"><br>
-          Imatge: <input id="inputImg" class="form-control" type="text"><br>              
+          Imatge (link): <input id="inputImg" class="form-control" type="text"><br>              
           <div id="errorModelDiv" class="alert alert-danger">
               <p id="errorModelP"></p>
             </div>
@@ -151,7 +153,7 @@
           Velocitat màxima: <input id="inputVelMaxAfegir" class="form-control" type="number"><br>
           CV: <input id="inputCVAfegir" class="form-control" type="number"><br>
           Preu: <input id="inputPreuAfegir" class="form-control" type="number"><br>
-          Imatge: <input id="inputImgAfegir" class="form-control" type="text"><br>
+          Imatge (link): <input id="inputImgAfegir" class="form-control" type="text"><br>
           <div id="errorModelDivAfegir" class="alert alert-danger">
               <p id="errorModelPAfegir"></p>
             </div>
@@ -177,11 +179,10 @@
         </div>
 
 
-  <script src="audi.js"></script>
-  <script src="ferrari.js"></script>
-  <script src="tesla.js"></script>
-  <script src="main.js"></script>
+  <script src="js/audi.js"></script>
+  <script src="js/ferrari.js"></script>
+  <script src="js/tesla.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
-
 </html>
