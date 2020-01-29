@@ -1,0 +1,9 @@
+{
+  "database": {
+    "username": "jsapena",
+    "password": "jsapena",
+    "connection": "mysql: host=localhost; dbname=cotxes; charset=utf8",
+    "options": {
+    }
+  }
+}
