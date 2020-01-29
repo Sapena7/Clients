@@ -1,66 +1,16 @@
-var tesla = [
-    {
-        "id": 1,
-        "nom": "Tesla Model S",
-        "any": 2012,
-        "velocitatMaxima": 325,
-        "CV": 796,
-        "preu": 105680,
-        "img": "https://soymotor.com/sites/default/files/imagenes/noticia/tesla-model-s-exterior-4-soymotor.jpg"
-    },
-    {
-        "id": 2,
-        "nom": "Tesla Model X",
-        "any": 2020,
-        "velocitatMaxima": 320,
-        "CV": 612,
-        "preu": 110780,
-        "img": "https://soymotor.com/sites/default/files/usuarios/redaccion/portal/redaccion/tesla-model-x-1-f1-soymotor.jpg"
-    },
-    {
-        "id": 3,
-        "nom": "Tesla Roadster",
-        "any": 2020,
-        "velocitatMaxima": 400,
-        "CV": 2000,
-        "preu": 172000,
-        "img": "https://evcompare.io/upload/resize_cache/iblock/485/1200_800_2/485e32eb754c49ab58cedb4ad4ce4235.jpg"
-    },
-    {
-        "id": 4,
-        "nom": "Tesla Cybertruck",
-        "any": 2020,
-        "velocitatMaxima": 209,
-        "CV": 200,
-        "preu": 36000,
-        "img": "https://www.thestreet.com/.image/t_share/MTY4NjUyNzU1NTM0MTYxODE1/wall-street-is-tepid-on-teslas-new-cybertruck-its-kind-of-aggressive.jpg"
-    },
-    {
-        "id": 5,
-        "nom": "Tesla Model Y",
-        "any": 2021,
-        "velocitatMaxima": 209,
-        "CV": 351,
-        "preu": 97000,
-        "img": "https://cdn.autobild.es/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2019/03/nos-subimos-tesla-model_2.jpg?itok=n50u-tsN"
-    },
-    {
-        "id": 6,
-        "nom": "Tesla Model 3",
-        "any": 2018,
-        "velocitatMaxima": 210,
-        "CV": 306,
-        "preu": 48000,
-        "img": "https://icdn2.digitaltrends.com/image/digitaltrends_es/tesla-model-3-feat-6.jpg"
+var tesla = '[{"id": 1,"nom": "Tesla Model S","any": 2012,"velocitatMaxima": 325,"CV": 796,"preu": 105680,"img": "https://soymotor.com/sites/default/files/imagenes/noticia/tesla-model-s-exterior-4-soymotor.jpg"},{"id": 2,"nom": "Tesla Model X","any": 2020,"velocitatMaxima": 320,"CV": 612,"preu": 110780,"img": "https://soymotor.com/sites/default/files/usuarios/redaccion/portal/redaccion/tesla-model-x-1-f1-soymotor.jpg"},{"id": 3,"nom": "Tesla Roadster","any": 2020,"velocitatMaxima": 400,"CV": 2000,"preu": 172000,"img": "https://evcompare.io/upload/resize_cache/iblock/485/1200_800_2/485e32eb754c49ab58cedb4ad4ce4235.jpg"},{"id": 4,"nom": "Tesla Cybertruck","any": 2020,"velocitatMaxima": 209,"CV": 200,"preu": 36000,"img": "https://www.thestreet.com/.image/t_share/MTY4NjUyNzU1NTM0MTYxODE1/wall-street-is-tepid-on-teslas-new-cybertruck-its-kind-of-aggressive.jpg"},{"id": 5,"nom": "Tesla Model Y","any": 2021,"velocitatMaxima": 209,"CV": 351,"preu": 97000,"img": "https://cdn.autobild.es/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2019/03/nos-subimos-tesla-model_2.jpg?itok=n50u-tsN"},{"id": 6,"nom": "Tesla Model 3","any": 2018,"velocitatMaxima": 210,"CV": 306,"preu": 48000,"img": "https://icdn2.digitaltrends.com/image/digitaltrends_es/tesla-model-3-feat-6.jpg"}]';
+
+
+    if(localStorage.getItem('tesla') == null){
+        localStorage.setItem('tesla', tesla);
     }
 
-
-];
 
 //Genera la taula
 generateTeslaTable();
 
 function generateTeslaTable() {
+    tesla = JSON.parse(localStorage.getItem('tesla'));
     var d = '<tr class=tableTesla>' +
         '<th>ID</th>' +
         '<th>Nom</th>' +
@@ -143,6 +93,8 @@ $("#tableTesla").on('click', '#modificarBtnTable', function () {
             obj.preu = preu;
             obj.img = imatge;
 
+            localStorage.setItem('tesla', JSON.stringify(tesla));
+
             $("#tableTesla tr").remove();
             generateTeslaTable();
             $("#modificarModal").modal('hide');
@@ -165,6 +117,7 @@ $("#tableTesla").on('click', '#eliminarBtnTable', function () {
             var obj = tesla[i];
             if (obj.id == trId) {
                 tesla.splice(i, 1);
+                localStorage.setItem('tesla', JSON.stringify(tesla));
                 $("#tableTesla tr").remove();
                 generateTeslaTable();
                 $("#eliminarModal").modal('hide');
@@ -227,6 +180,7 @@ $("#añadirBtnTesla").click(function () {
                 "img": imatge
             };
             tesla.push(obj);
+            localStorage.setItem('tesla', JSON.stringify(tesla));
 
             $("#tableTesla tr").remove();
             generateTeslaTable();
@@ -263,8 +217,8 @@ $("#filterInput").on("keyup", function () {
 function validateTesla(idCotxeModificar, id, nom, any, velMax, cv, preu, imatge) {
     let errors = [];
 
-    for (var i = 0; i < audi.length; i++) {
-        if (audi[i].id == id) {
+    for (var i = 0; i < tesla.length; i++) {
+        if (tesla[i].id == id) {
             if (id != idCotxeModificar) {
                 errors.push("-> El id " + id + " ya existix. </br>");
             }

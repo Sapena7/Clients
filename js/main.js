@@ -27,3 +27,7 @@ function fileExtValidate(img) {
         return true;
     }
 }
+
+$.get("consulta.php", function(data, status){
+    console.log(data);
+});

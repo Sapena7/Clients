@@ -1,65 +1,18 @@
-var ferrari = [
-    {
-        "id": 1,
-        "nom": "Ferrari 458",
-        "any": 2009,
-        "velocitatMaxima": 325,
-        "CV": 570,
-        "preu": 245924,
-        "img": "https://www.revistadelmotor.es/wp-content/uploads/2018/07/Ferrari-458-Italia-1.jpg"
-    },
-    {
-        "id": 2,
-        "nom": "Ferrari Portofino",
-        "any": 2018,
-        "velocitatMaxima": 320,
-        "CV": 600,
-        "preu": 215602,
-        "img": "https://cochesnuevos.autofacil.es/img/FERRRARI_PORTOFINO.jpg"
-    },
-    {
-        "id": 3,
-        "nom": "Ferrari 812 GTS",
-        "any": 2020,
-        "velocitatMaxima": 340,
-        "CV": 800,
-        "preu": 339000,
-        "img": "https://arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/PLSB3NSOZ5EBTO27GPFOYGZBXI.jpg"
-    },
-    {
-        "id": 4,
-        "nom": "Ferrari 812 Superfast",
-        "any": 2020,
-        "velocitatMaxima": 340,
-        "CV": 800,
-        "preu": 339000,
-        "img": "https://elcomercio.pe/resizer/e9Wp_fKezad5AcAimBVja8EYumE=/1200x800/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/WMIOH4XJ7JGKNITVQHE2TLE5ME.jpg"
-    },
-    {
-        "id": 5,
-        "nom": "Ferrari Roma",
-        "any": 2020,
-        "velocitatMaxima": 320,
-        "CV": 620,
-        "preu": 238077,
-        "img": "https://imagenes.km77.com/fotos/bbtcontent/clippingnew/KM7KPH20191113_0130/full-original.jpg"
-    },
-    {
-        "id": 6,
-        "nom": "Ferrari F8 Spider",
-        "any": 2020,
-        "velocitatMaxima": 315,
-        "CV": 590,
-        "preu": 210000,
-        "img": "https://arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/PLSB3NSOZ5EBTO27GPFOYGZBXI.jpg"
+
+var ferrari = '[{"id": 1,"nom": "Ferrari 458","any": 2009,"velocitatMaxima": 325,"CV": 570,"preu": 245924,"img": "https://www.revistadelmotor.es/wp-content/uploads/2018/07/Ferrari-458-Italia-1.jpg"},{"id": 2,"nom": "Ferrari Portofino","any": 2018,"velocitatMaxima": 320,"CV": 600,"preu": 215602,"img": "https://cochesnuevos.autofacil.es/img/FERRRARI_PORTOFINO.jpg"},{"id": 3,"nom": "Ferrari 812 GTS","any": 2020,"velocitatMaxima": 340,"CV": 800,"preu": 339000,"img": "https://arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/PLSB3NSOZ5EBTO27GPFOYGZBXI.jpg"},{"id": 4,"nom": "Ferrari 812 Superfast","any": 2020,"velocitatMaxima": 340,"CV": 800,"preu": 339000,"img": "https://elcomercio.pe/resizer/e9Wp_fKezad5AcAimBVja8EYumE=/1200x800/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/WMIOH4XJ7JGKNITVQHE2TLE5ME.jpg"},{"id": 5,"nom": "Ferrari Roma","any": 2020,"velocitatMaxima": 320,"CV": 620,"preu": 238077,"img": "https://imagenes.km77.com/fotos/bbtcontent/clippingnew/KM7KPH20191113_0130/full-original.jpg"},{"id": 6,"nom": "Ferrari F8 Spider","any": 2020,"velocitatMaxima": 315,"CV": 590,"preu": 210000,"img": "https://arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/PLSB3NSOZ5EBTO27GPFOYGZBXI.jpg"}]';
+
+
+    if(localStorage.getItem('ferrari') == null){
+        localStorage.setItem('ferrari', ferrari);
     }
-];
+
 
 
 //Genera la taula
 generateFerrariTable();
 
 function generateFerrariTable() {
+    ferrari = JSON.parse(localStorage.getItem('ferrari'));
     var d = '<tr class="tableFerrari">' +
         '<th>ID</th>' +
         '<th>Nom</th>' +
@@ -141,6 +94,8 @@ $("#tableFerrari").on('click', '#modificarBtnTable', function () {
             obj.preu = preu;
             obj.img = imatge;
 
+            localStorage.setItem('ferrari', JSON.stringify(ferrari));
+
             $("#tableFerrari tr").remove();
             generateFerrariTable();
             $("#modificarModal").modal('hide');
@@ -164,6 +119,7 @@ $("#tableFerrari").on('click', '#eliminarBtnTable', function () {
             var obj = ferrari[i];
             if (obj.id == trId) {
                 ferrari.splice(i, 1);
+                localStorage.setItem('ferrari', JSON.stringify(ferrari));
                 $("#tableFerrari tr").remove();
                 generateFerrariTable();
                 $("#eliminarModal").modal('hide');
@@ -226,7 +182,7 @@ $("#añadirBtnFerrari").click(function () {
                 "img": imatge
             };
             ferrari.push(obj);
-
+            localStorage.setItem('ferrari', JSON.stringify(ferrari));
             $("#tableFerrari tr").remove();
             generateFerrariTable();
             $("#añadirModal").modal('hide');

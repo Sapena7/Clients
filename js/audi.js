@@ -1,65 +1,18 @@
-var audi = [
-    {
-        "id": 1,
-        "nom": "Audi A1",
-        "any": 2018,
-        "velocitatMaxima": 177,
-        "CV": 95,
-        "preu": 21102,
-        "img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_A1_15302/Audi-a1-1.jpg"
-    },
-    {
-        "id": 2,
-        "nom": "Audi A3",
-        "any": 2018,
-        "velocitatMaxima": 188,
-        "CV": 116,
-        "preu": 27365,
-        "img": "https://cochesnuevos.autofacil.es/img/AUDI_A3_SPORTBACK.jpg"
-    },
-    {
-        "id": 3,
-        "nom": "Audi A5",
-        "any": 2018,
-        "velocitatMaxima": 241,
-        "CV": 190,
-        "preu": 40400,
-        "img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_A5_212407/Audi-A5-Sportback-1.jpg"
-    },
-    {
-        "id": 4,
-        "nom": "Audi A5",
-        "any": 2018,
-        "velocitatMaxima": 207,
-        "CV": 150,
-        "preu": 36333,
-        "img": "https://www.cars-data.com/pictures/audi/audi-a5-sportback_3725_17.jpg"
-    },
-    {
-        "id": 5,
-        "nom": "Audi A4 Avant",
-        "any": 2019,
-        "velocitatMaxima": 211,
-        "CV": 163,
-        "preu": 49843,
-        "img": "https://i.auto-bild.de/ir_img/2/1/3/4/7/8/9/Audi-A4-Facelift-2019-Bilder-1200x800-90465b4d340b62d8.jpg"
-    },
-    {
-        "id": 6,
-        "nom": "Audi e-Tron",
-        "any": 2020,
-        "velocitatMaxima": 190,
-        "CV": 313,
-        "preu": 82400,
-        "img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_e-tron_212303/audi-etronsportback-1.jpg"
-    }
-];
+var audi = '[{"id": 1,"nom": "Audi A1","any": 2018,"velocitatMaxima": 177,"CV": 95,"preu": 21102,"img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_A1_15302/Audi-a1-1.jpg"},{"id": 2,"nom": "Audi A3","any": 2018,"velocitatMaxima": 188,"CV": 116,"preu": 27365,"img": "https://cochesnuevos.autofacil.es/img/AUDI_A3_SPORTBACK.jpg"},{"id": 3,"nom": "Audi A5","any": 2018,"velocitatMaxima": 241,"CV": 190,"preu": 40400,"img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_A5_212407/Audi-A5-Sportback-1.jpg"},{"id": 4,"nom": "Audi A5","any": 2018,"velocitatMaxima": 207,"CV": 150,"preu": 36333,"img": "https://www.cars-data.com/pictures/audi/audi-a5-sportback_3725_17.jpg"},{"id": 5,"nom": "Audi A4 Avant","any": 2019,"velocitatMaxima": 211,"CV": 163,"preu": 49843,"img": "https://i.auto-bild.de/ir_img/2/1/3/4/7/8/9/Audi-A4-Facelift-2019-Bilder-1200x800-90465b4d340b62d8.jpg"},{"id": 6,"nom": "Audi e-Tron","any": 2020,"velocitatMaxima": 190,"CV": 313,"preu": 82400,"img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_e-tron_212303/audi-etronsportback-1.jpg"}]';
 
+/*
+    if(localStorage.getItem('audi') == null){
+        localStorage.setItem('audi', audi);   
+    }
+
+  */
 
 //Genera la taula
 generateAudiTable();
 
 function generateAudiTable() {
+    //audi = JSON.parse(localStorage.getItem('audi'));
+
     var d = '<tr class="tableAudi">' +
         '<th>ID</th>' +
         '<th>Nom</th>' +
@@ -147,6 +100,7 @@ $("#tableAudi").on('click', '#modificarBtnTable', function () {
             obj.preu = preu;
             obj.img = imatge;
 
+            localStorage.setItem('audi', JSON.stringify(audi));
 
             $("#tableAudi tr").remove();
             generateAudiTable();
@@ -176,6 +130,7 @@ $("#tableAudi").on('click', '#eliminarBtnTable', function () {
             var obj = audi[i];
             if (obj.id == trId) {
                 audi.splice(i, 1);
+                localStorage.setItem('audi', JSON.stringify(audi));
                 $("#tableAudi tr").remove();
                 generateAudiTable();
                 $("#eliminarModal").modal('hide');
@@ -251,6 +206,7 @@ $("#añadirBtnAudi").click(function () {
                 "img": imatge
             };
             audi.push(obj);
+            localStorage.setItem('audi', JSON.stringify(audi));
 
             $("#tableAudi tr").remove();
             generateAudiTable();
