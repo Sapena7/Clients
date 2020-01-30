@@ -28,6 +28,4 @@ function fileExtValidate(img) {
     }
 }
 
-$.get("consulta.php", function(data, status){
-    console.log(data);
-});
+

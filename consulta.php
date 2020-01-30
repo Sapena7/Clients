@@ -1,7 +1,6 @@
 <?php
-use PDO;
-class consulta
-{
+
+class consulta{
     private $pdo;
 
     public function __construct(PDO $pdo)
@@ -46,5 +45,15 @@ class consulta
     }
 
 }
-echo "hola";
+$pdo = new PDO ( "mysql:host=localhost;dbname=cotxes;charset=utf8", "jsapena", "jsapena");
+$consulta = new consulta($pdo);
+$audi = $consulta->getAudi();
+$ferrari = $consulta->getFerrari();
+$tesla = $consulta->getTesla();
+/*$audi = json_encode($audi);
+$ferrari = json_encode($ferrari);
+$tesla = json_encode($tesla);*/
+print_r($audi);
+print_r($ferrari);
+print_r($tesla);
 ?>

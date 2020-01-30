@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c8b5267-b850-46b7-b926-0a33a4ea41b6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consulta.php" beforeDir="false" afterPath="$PROJECT_DIR$/consulta.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/audi.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/audi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ferrari.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ferrari.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/tesla.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/tesla.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,21 +60,56 @@
       <option name="presentableId" value="Default" />
       <updated>1580297317742</updated>
       <workItem from="1580297319417" duration="3374000" />
-      <workItem from="1580301248553" duration="1332000" />
+      <workItem from="1580301248553" duration="1555000" />
+      <workItem from="1580368174280" duration="2871000" />
     </task>
+    <task id="LOCAL-00001" summary="ajax">
+      <created>1580302700071</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580302700071</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ajax">
+      <created>1580302755887</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1580302755887</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ajax">
+      <created>1580302783057</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1580302783057</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ajax" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajax" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="525" y="71" width="862" height="806" key="CommitChangelistDialog2" timestamp="1580302755771">
+    <state x="525" y="71" width="862" height="806" key="CommitChangelistDialog2" timestamp="1580302782965">
       <screen x="0" y="28" width="1920" height="893" />
     </state>
-    <state x="525" y="71" width="862" height="806" key="CommitChangelistDialog2/0.28.1920.893@0.28.1920.893" timestamp="1580302755771" />
-    <state x="555" y="211" width="802" height="527" key="Vcs.Push.Dialog.v2" timestamp="1580302713704">
+    <state x="525" y="71" width="862" height="806" key="CommitChangelistDialog2/0.28.1920.893@0.28.1920.893" timestamp="1580302782965" />
+    <state x="743" y="233" width="426" height="483" key="FileChooserDialogImpl" timestamp="1580369304659">
       <screen x="0" y="28" width="1920" height="893" />
     </state>
-    <state x="555" y="211" width="802" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.893@0.28.1920.893" timestamp="1580302713704" />
+    <state x="743" y="233" width="426" height="483" key="FileChooserDialogImpl/0.28.1920.893@0.28.1920.893" timestamp="1580369304659" />
+    <state x="555" y="211" width="802" height="527" key="Vcs.Push.Dialog.v2" timestamp="1580302786563">
+      <screen x="0" y="28" width="1920" height="893" />
+    </state>
+    <state x="555" y="211" width="802" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.893@0.28.1920.893" timestamp="1580302786563" />
+    <state x="616" y="302" key="com.intellij.ide.util.TipDialog" timestamp="1580368173412">
+      <screen x="0" y="28" width="1920" height="893" />
+    </state>
+    <state x="616" y="302" key="com.intellij.ide.util.TipDialog/0.28.1920.893@0.28.1920.893" timestamp="1580368173412" />
   </component>
 </project>

@@ -1,4 +1,4 @@
-var audi = '[{"id": 1,"nom": "Audi A1","any": 2018,"velocitatMaxima": 177,"CV": 95,"preu": 21102,"img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_A1_15302/Audi-a1-1.jpg"},{"id": 2,"nom": "Audi A3","any": 2018,"velocitatMaxima": 188,"CV": 116,"preu": 27365,"img": "https://cochesnuevos.autofacil.es/img/AUDI_A3_SPORTBACK.jpg"},{"id": 3,"nom": "Audi A5","any": 2018,"velocitatMaxima": 241,"CV": 190,"preu": 40400,"img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_A5_212407/Audi-A5-Sportback-1.jpg"},{"id": 4,"nom": "Audi A5","any": 2018,"velocitatMaxima": 207,"CV": 150,"preu": 36333,"img": "https://www.cars-data.com/pictures/audi/audi-a5-sportback_3725_17.jpg"},{"id": 5,"nom": "Audi A4 Avant","any": 2019,"velocitatMaxima": 211,"CV": 163,"preu": 49843,"img": "https://i.auto-bild.de/ir_img/2/1/3/4/7/8/9/Audi-A4-Facelift-2019-Bilder-1200x800-90465b4d340b62d8.jpg"},{"id": 6,"nom": "Audi e-Tron","any": 2020,"velocitatMaxima": 190,"CV": 313,"preu": 82400,"img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_e-tron_212303/audi-etronsportback-1.jpg"}]';
+//var audi = '[{"id": 1,"nom": "Audi A1","any": 2018,"velocitatMaxima": 177,"CV": 95,"preu": 21102,"img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_A1_15302/Audi-a1-1.jpg"},{"id": 2,"nom": "Audi A3","any": 2018,"velocitatMaxima": 188,"CV": 116,"preu": 27365,"img": "https://cochesnuevos.autofacil.es/img/AUDI_A3_SPORTBACK.jpg"},{"id": 3,"nom": "Audi A5","any": 2018,"velocitatMaxima": 241,"CV": 190,"preu": 40400,"img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_A5_212407/Audi-A5-Sportback-1.jpg"},{"id": 4,"nom": "Audi A5","any": 2018,"velocitatMaxima": 207,"CV": 150,"preu": 36333,"img": "https://www.cars-data.com/pictures/audi/audi-a5-sportback_3725_17.jpg"},{"id": 5,"nom": "Audi A4 Avant","any": 2019,"velocitatMaxima": 211,"CV": 163,"preu": 49843,"img": "https://i.auto-bild.de/ir_img/2/1/3/4/7/8/9/Audi-A4-Facelift-2019-Bilder-1200x800-90465b4d340b62d8.jpg"},{"id": 6,"nom": "Audi e-Tron","any": 2020,"velocitatMaxima": 190,"CV": 313,"preu": 82400,"img": "https://quadis.s3.amazonaws.com/GestorQuadis/Novedades/Audi_e-tron_212303/audi-etronsportback-1.jpg"}]';
 
 /*
     if(localStorage.getItem('audi') == null){
@@ -9,36 +9,42 @@ var audi = '[{"id": 1,"nom": "Audi A1","any": 2018,"velocitatMaxima": 177,"CV": 
 
 //Genera la taula
 generateAudiTable();
-
 function generateAudiTable() {
-    //audi = JSON.parse(localStorage.getItem('audi'));
+    var arraycomplet;
+    var audi = "";
+    $.get("consulta.php", function(data, status){
 
-    var d = '<tr class="tableAudi">' +
-        '<th>ID</th>' +
-        '<th>Nom</th>' +
-        '<th>Any</th>' +
-        '<th>Velocitat Màxima</th>' +
-        '<th>CV</th>' +
-        '<th>Preu</th>' +
-        '<th>Opcions</th>' +
-        '</tr>';
+        audi = data;
 
-    for (var i = 0; i < audi.length; i++) {
-        d += '<tr id=' + audi[i].id + '>' +
-            '<td>' + audi[i].id + '</td>' +
-            '<td>' + audi[i].nom + '</td>' +
-            '<td>' + audi[i].any + '</td>' +
-            '<td>' + audi[i].velocitatMaxima + ' km/h</td>' +
-            '<td>' + audi[i].CV + '</td>' +
-            '<td>' + formatThousands(audi[i].preu) + ' €</td>' +
-            '<td>' +
-            '<a id="modificarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/edit.png"></a>' +
-            '<a id="eliminarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/delete-forever.png"></a>' +
-            '<a id="voreBtnTable"><img src="imatges/eye.png"></a>' +
-            '</td>' +
+
+        var d = '<tr class="tableAudi">' +
+            '<th>ID</th>' +
+            '<th>Nom</th>' +
+            '<th>Any</th>' +
+            '<th>Velocitat Màxima</th>' +
+            '<th>CV</th>' +
+            '<th>Preu</th>' +
+            '<th>Opcions</th>' +
             '</tr>';
-    }
-    $("#tableAudi").append(d);
+
+        for (var i = 0; i < audi.length; i++) {
+            d += '<tr id=' + audi[i].id + '>' +
+                '<td>' + audi[i].id + '</td>' +
+                '<td>' + audi[i].nom + '</td>' +
+                '<td>' + audi[i].any + '</td>' +
+                '<td>' + audi[i].velocitatMaxima + ' km/h</td>' +
+                '<td>' + audi[i].CV + '</td>' +
+                '<td>' + formatThousands(audi[i].preu) + ' €</td>' +
+                '<td>' +
+                '<a id="modificarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/edit.png"></a>' +
+                '<a id="eliminarBtnTable"><img src="https://img.icons8.com/cute-clipart/24/000000/delete-forever.png"></a>' +
+                '<a id="voreBtnTable"><img src="imatges/eye.png"></a>' +
+                '</td>' +
+                '</tr>';
+        }
+        $("#tableAudi").append(d);
+    });
+
 }
 
 
