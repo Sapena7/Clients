@@ -12,10 +12,9 @@ generateAudiTable();
 function generateAudiTable() {
     var arraycomplet;
     var audi = "";
-    $.get("consulta.php", function(data, status){
+    $.get("consulta.php", {"nom" : "audi"}, function(data, status){
 
-        audi = data;
-
+        audi = JSON.parse(data);
 
         var d = '<tr class="tableAudi">' +
             '<th>ID</th>' +
